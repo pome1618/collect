@@ -52,7 +52,6 @@ namespace collect
 			{
 				file_num++;
 			}
-			MessageBox.Show(Convert.ToString(file_num));
 
 			while ((line = sr.ReadLine()) != null)	//もし読み込みに失敗したら終了。
 			{
@@ -70,8 +69,6 @@ namespace collect
 					count++;						//文字数のカウント
 					str_start--;					//もう一つ前を見る
 				}
-				string msg = System.String.Format("str_start={0},str_end={1}", str_start, str_end);
-			//	MessageBox.Show(msg);
 				if(str_start>0&&str_end>0){			//もし画像があったら
 					pic_url = line.Substring(str_start, count + 3);
 
@@ -91,8 +88,6 @@ namespace collect
 						{
 							dl.DownloadFile(pic_url, path + file_num + fe);
 						}
-						msg = System.String.Format("result={0}", path + file_num + fe);
-						MessageBox.Show(msg);
 					}
 					else
 					{
@@ -104,7 +99,7 @@ namespace collect
 			}
 		}
 
-		public static bool check_data(int cmd,int height,int width,Image image)
+		public static bool check_data(int cmd,int height,int width,Image image)		//保存する条件に適しているかどうかを判定
 		{
 			bool result=false;
 			if (cmd == 0)
